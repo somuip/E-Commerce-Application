@@ -30,10 +30,9 @@ public class Card {
     @Enumerated(EnumType.STRING)
     CardType cardType;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn
     Customer customer;
-
 
 
 }

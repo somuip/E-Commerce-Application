@@ -2,6 +2,7 @@ package com.example.ECommerceApplication.controller;
 
 import com.example.ECommerceApplication.dto.RequestDto.CustomerRequestDto;
 import com.example.ECommerceApplication.dto.ResponseDto.CustomerResponseDto;
+import com.example.ECommerceApplication.exception.MobileNoAlreadyExistsException;
 import com.example.ECommerceApplication.model.Customer;
 import com.example.ECommerceApplication.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class CustomerController {
     CustomerService customerService;
 
     @PostMapping("add-customer")
-    public CustomerResponseDto addCustomer(@RequestBody CustomerRequestDto customerRequestDto){
+    public CustomerResponseDto addCustomer(@RequestBody CustomerRequestDto customerRequestDto) throws MobileNoAlreadyExistsException {
         return customerService.addCustomer(customerRequestDto);
     }
 }

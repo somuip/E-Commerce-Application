@@ -21,12 +21,15 @@ public class Customer {
     int id;
 
     String name;
+    @Column(unique = true)
     String email;
     int age;
+    @Column(unique = true)
     String mobNo;
+    String address;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-    Card card;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    List<Card> cards = new ArrayList<>();
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     Cart cart;

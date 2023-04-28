@@ -8,8 +8,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder // another way of creating objects
-public class CustomerResponseDto {
+public class CardResponseDto {
 
-    String name;
-    String message;
+    String cardNo;
+    String customerName;
+
 }

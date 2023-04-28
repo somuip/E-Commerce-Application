@@ -21,6 +21,7 @@ public class Cart {
     int id;
 
     int totalCost;
+    int numberOfItems;
 
     @OneToOne
     Customer customer;
