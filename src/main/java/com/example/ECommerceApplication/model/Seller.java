@@ -1,10 +1,7 @@
 package com.example.ECommerceApplication.model;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
@@ -16,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder // another way of creating objects
 public class Seller {
 
     @Id
@@ -23,10 +21,13 @@ public class Seller {
     int id;
 
     String name;
+    @Column(unique = true)
+
     String email;
+
     String mobNo;
+
     int age;
-    String enterprise;
 
     @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
     List<Product> products = new ArrayList<>();

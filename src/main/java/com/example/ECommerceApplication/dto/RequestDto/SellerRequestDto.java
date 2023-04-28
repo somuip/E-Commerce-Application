@@ -1,6 +1,5 @@
 package com.example.ECommerceApplication.dto.RequestDto;
 
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,12 +8,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder // another way of creating objects
-public class CustomerRequestDto {
-
+public class SellerRequestDto {
     String name;
-    String email;
+    String emailId;
     int age;
     String mobNo;
+
 }
-
-

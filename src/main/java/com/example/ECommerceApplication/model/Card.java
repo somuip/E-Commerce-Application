@@ -2,12 +2,11 @@ package com.example.ECommerceApplication.model;
 
 import com.example.ECommerceApplication.enums.CardType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
+
+import java.util.Date;
 
 @Entity
 @Table(name="card")
@@ -15,23 +14,26 @@ import org.springframework.jdbc.support.CustomSQLErrorCodesTranslation;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE) // makes all attributes private
+@Builder // another way of creating objects
 public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String CVV;
+    int CVV;
+
+    @Column(unique = true,nullable = false)
     String cardNo;
-    String expiry;
+
+    Date expiry;
+    @Enumerated(EnumType.STRING)
     CardType cardType;
 
     @OneToOne
+    @JoinColumn
     Customer customer;
 
-    @OneToOne
-    Product product;
 
-//    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
-//    Orders orders;
+
 }

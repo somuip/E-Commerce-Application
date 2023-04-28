@@ -2,10 +2,7 @@ package com.example.ECommerceApplication.model;
 
 import com.example.ECommerceApplication.enums.Category;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
@@ -14,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder // another way of creating objects
 public class Product {
 
     @Id
@@ -21,7 +19,9 @@ public class Product {
     int id;
 
     String name;
+
     int quantity;
+
     int price;
 
     @Enumerated(EnumType.STRING)

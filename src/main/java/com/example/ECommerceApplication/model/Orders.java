@@ -2,13 +2,11 @@ package com.example.ECommerceApplication.model;
 
 import com.example.ECommerceApplication.enums.OrderStatus;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,25 +15,25 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder // another way of creating objects
 public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String date;
+    Date orderDate;
     int totalCost;
-    int orderNo;
+    String orderNo;
     OrderStatus orderStatus;
 
     @ManyToOne
+    @JoinColumn
     Customer customer;
 
     @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
     List<Item> totalItems = new ArrayList<>();
 
-//    @OneToOne
-//    Card card;
 
 
 }
