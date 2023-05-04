@@ -1,25 +1,22 @@
 package com.example.ECommerceApplication.dto.RequestDto;
 
-import com.example.ECommerceApplication.enums.CardType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder // another way of creating objects
-public class CardRequestDto {
+public class OrderRequestDto {
 
-    String email;
+    int customerId;
 
-    int cvv;
+    int productId;
+
+    int requiredQuantity;
 
     String cardNo;
 
-    Date expiry;
-
-    CardType cardType;
+    int cvv;
 }

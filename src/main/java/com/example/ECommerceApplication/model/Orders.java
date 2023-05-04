@@ -4,6 +4,7 @@ import com.example.ECommerceApplication.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,17 +23,21 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    Date orderDate;
-    int totalCost;
     String orderNo;
-    OrderStatus orderStatus;
+
+    @CreationTimestamp
+    Date orderDate;
+
+    int totalCost;
+
+    String cardUsed;
 
     @ManyToOne
     @JoinColumn
     Customer customer;
 
     @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
-    List<Item> totalItems = new ArrayList<>();
+    List<Item> items = new ArrayList<>();
 
 
 

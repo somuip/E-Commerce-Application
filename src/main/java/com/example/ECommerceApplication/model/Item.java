@@ -17,17 +17,18 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String name;
     int requiredQuantity;
-    int cost;
 
     @ManyToOne
+    @JoinColumn
     Cart cart;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn
     Product product;
 
     @ManyToOne
+    @JoinColumn
     Orders orders;
 
 
